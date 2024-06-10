@@ -12,15 +12,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/version: 0.0.1-SNAPSHOT
       app.kubernetes.io/name: vault-demo
+      app.kubernetes.io/version: 0.0.1-SNAPSHOT
   template:
     metadata:
       annotations:
         app.dekorate.io/vcs-url: <<unknown>>
       labels:
-        app.kubernetes.io/version: 0.0.1-SNAPSHOT
         app.kubernetes.io/name: vault-demo
+        app.kubernetes.io/version: 0.0.1-SNAPSHOT
     spec:
       containers:
         - env:
@@ -52,7 +52,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: VAULT_KEY
-                  name: vault-springboot-secrate
+                  name: vault-springboot-secret
             - name: VAULT_ROLE_ID
               valueFrom:
                 configMapKeyRef:
