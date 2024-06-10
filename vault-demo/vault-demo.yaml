@@ -58,7 +58,7 @@ spec:
                 configMapKeyRef:
                   key: VAULT_ROLE_ID
                   name: cluster-config
-          image: ghcr.io/nikhil12894/vault-demo
+          image: ghcr.io/nikhil12894/vault-demo:latest
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
