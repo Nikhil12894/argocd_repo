@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: vps-landing-app
-    sha: 51c1b6c6ec49ee92db3c0710fac8db0bb9c6a044
+    sha: dd91f5269bde92f73b6f8a182897f6dddff2b43f
     version: 1.0.0
   name: vps-landing
 spec:
@@ -19,7 +19,7 @@ spec:
         version: 1.0.0
     spec:
       containers:
-        - image: docker.io/nikhil12894/myvps_landing:latest
+        - image: docker.io/nikhil12894/vps-landing:v1.0
           name: vps-landing-container
           ports:
             - containerPort: 80
