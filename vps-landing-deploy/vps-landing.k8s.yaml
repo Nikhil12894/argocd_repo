@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: 'public'
   rules:
-  - host: learnwithnk.in
+  - host: landing.learnwithnk.in
     http:
       paths:
       - backend:
@@ -66,5 +66,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - learnwithnk.in
+    - landing.learnwithnk.in
     secretName: vps-landing1-tls
