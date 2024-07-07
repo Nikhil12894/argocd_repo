@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: vps-landing-app
-    sha: e7bd7e9e475910420ae9dd5172954b37d1ece322
+    sha: d0e137220d7ff58d0ef634a82693f5c04cce16aa
     version: 1.0.0
   name: vps-landing
 spec:
@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: landing.learnwithnk.in
+    - host: learnwithnk.in
       http:
         paths:
           - backend:
@@ -66,5 +66,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - landing.learnwithnk.in
+        - learnwithnk.in
       secretName: vps-landing-tls
