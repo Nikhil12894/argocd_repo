@@ -45,13 +45,14 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
-    kubernetes.io/ingress.class: public
+    # kubernetes.io/ingress.class: public
   labels:
     app: vps-landing-app
     version: 1.0.0
   name: vps-landing-ingress
   namespace: default
 spec:
+  ingressClassName: 'public'
   rules:
   - host: learnwithnk.in
     http:
@@ -66,4 +67,4 @@ spec:
   tls:
   - hosts:
     - learnwithnk.in
-    secretName: vps-landing-tls
+    secretName: vps-landing1-tls
