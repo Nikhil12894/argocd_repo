@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: vps-landing-app
-    sha: 4d82be3b706a1a9b89e963250a58b693eabefa67
+    sha: cb77702a4f510f809b414aa2cb49b939c8bfdce7
     version: 1.0.0
   name: vps-landing
 spec:
