@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: editor-root-app
+    app: micro-frontend-editor-app
     sha: fd2f7c1f87b6ff7973cebe27af8b8cd65c97c028
     version: 1.0.0
-  name: editor-root
+  name: micro-frontend-editor
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: editor-root-app
+      app: micro-frontend-editor-app
       version: 1.0.0
   template:
     metadata:
       labels:
-        app: editor-root-app
+        app: micro-frontend-editor-app
         version: 1.0.0
     spec:
       containers:
-        - image: docker.io/nikhil12894/editor-app:v1.0.0
-          name: editor-root-container
+        - image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.0
+          name: micro-frontend-editor-container
           ports:
             - containerPort: 80
 ---
@@ -28,16 +28,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: editor-root-app
+    app: micro-frontend-editor-app
     version: 1.0.0
-  name: editor-root-service
+  name: micro-frontend-editor-service
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 80
   selector:
-    app: editor-root-app
+    app: micro-frontend-editor-app
     version: 1.0.0
   type: ClusterIP
 ---
@@ -47,24 +47,24 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
   labels:
-    app: editor-root-app
+    app: micro-frontend-editor-app
     version: 1.0.0
-  name: editor-root-ingress
+  name: micro-frontend-editor-ingress
   namespace: default
 spec:
   ingressClassName: public
   rules:
-    - host: app-editor.learnwithnk.in
+    - host: micro-frontend-editor.learnwithnk.in
       http:
         paths:
           - backend:
               service:
-                name: editor-root-service
+                name: micro-frontend-editor-service
                 port:
                   number: 80
             path: /
             pathType: Prefix
   tls:
     - hosts:
-        - app-editor.learnwithnk.in
-      secretName: editor-root-tls
+        - micro-frontend-editor.learnwithnk.in
+      secretName: micro-frontend-editor-tls
