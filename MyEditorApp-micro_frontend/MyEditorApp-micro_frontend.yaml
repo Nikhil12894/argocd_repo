@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: editor-root-app
-    sha: 0011eaff5905909ea2962b42905425e9edd46b9f
+    sha: fd2f7c1f87b6ff7973cebe27af8b8cd65c97c028
     version: 1.0.0
   name: editor-root
 spec:
