@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: micro-frontend-editor-app
-    sha: 2e4f4b1fc66764cac17ecd0223efbde53408d20b
+    sha: 16077827f6b630ce1e573136cc130a7efd98952f
     version: 1.0.0
   name: micro-frontend-editor
 spec:
@@ -22,7 +22,7 @@ spec:
         - env:
             - name: EDITOR_COMPONENTS_URL
               value: http://editor-root-service/assets/remoteEntry.js
-          image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.0
+          image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.1
           name: micro-frontend-editor-container
           ports:
             - containerPort: 80
