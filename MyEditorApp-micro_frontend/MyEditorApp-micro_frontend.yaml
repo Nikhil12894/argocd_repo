@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: editor-root-app
-    sha: 642fe1386af3a6c999be8b2b5e7439ed9a982b80
+    sha: 0011eaff5905909ea2962b42905425e9edd46b9f
     version: 1.0.0
   name: editor-root
 spec:
@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: app_editor.learnwithnk.in
+    - host: app-editor.learnwithnk.in
       http:
         paths:
           - backend:
@@ -66,5 +66,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - app_editor.learnwithnk.in
+        - app-editor.learnwithnk.in
       secretName: editor-root-tls
