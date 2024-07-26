@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: editor-root-app
-    sha: 7cef08465dbcaecbce913ebd7af2c444e86a8e8e
+    sha: da846652d7046852c70b2584cbd052165369b5ea
     version: 1.0.0
   name: editor-root
 spec:
@@ -19,7 +19,7 @@ spec:
         version: 1.0.0
     spec:
       containers:
-        - image: docker.io/nikhil12894/editor-app:v1.0.0
+        - image: docker.io/nikhil12894/editor-app:v1.0.1
           name: editor-root-container
           ports:
             - containerPort: 80
