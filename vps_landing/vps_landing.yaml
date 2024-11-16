@@ -66,5 +66,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - learnwithnk.in
+        - explorewithnk.com
       secretName: vps-landing-tls
