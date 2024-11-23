@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: observability
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "lets-encrypt-prod"
+spec:
+  rules:
+  - host: grafana.learnwithnk.in
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-prom-stack-grafana
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - grafana.learnwithnk.in
+    secretName: grafana-tls
