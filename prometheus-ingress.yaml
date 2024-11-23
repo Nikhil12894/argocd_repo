@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: "lets-encrypt-prod"
 spec:
   rules:
-  - host: prometheus.learnwithnk.in
+  - host: prometheus.sdddsds.in
     http:
       paths:
       - path: /
@@ -20,5 +20,5 @@ spec:
               number: 9090
   tls:
   - hosts:
-    - prometheus.learnwithnk.in
+    - prometheus.asaadsadssdsda.in
     secretName: prometheus-tls
