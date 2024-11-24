@@ -18,7 +18,7 @@ spec:
           - host: dashy.learnwithnk.in # Replace with your domain
             paths:
             - path: /
-              # pathType: prefix
+              pathType: Prefix
           annotations:
             kubernetes.io/ingress.class: public
             cert-manager.io/cluster-issuer: lets-encrypt-prod
