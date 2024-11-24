@@ -3,21 +3,35 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: dashy
-  namespace: argocd # This should be the namespace where ArgoCD is running
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://vyrtualsynthese.github.io/selfhosted-helmcharts/ # Chart repository URL
-    targetRevision: "1.0.0" # Use a valid tag, branch, or commit hash here
+    repoURL: https://vyrtualsynthese.github.io/selfhosted-helmcharts/
+    targetRevision: "1.0.0" # Replace with the correct version
     chart: dashy
     helm:
-      valuesFrom:
-      - configMapKeyRef:
-          name: dashy-values # Make sure your dashy-values.yaml is stored in a ConfigMap
-          key: values.yaml
+      values: |
+        ingress:
+          enabled: true
+          hosts:
+            - host: dashy.learnwithnk.in  # Replace with your domain
+              paths:
+                - /
+          annotations:
+            kubernetes.io/ingress.class: public
+            cert-manager.io/cluster-issuer: lets-encrypt-prod
+          tls:
+            - hosts:
+                - dashy.learnwithnk.in
+              secretName: dashy-tls-cert
+        # Optional: Customize Dashy further if needed
+        # image:
+        #   repository: <your-custom-repo>
+        #   tag: <your-custom-tag>
   destination:
-    server: https://kubernetes.default.svc # Kubernetes API server URL
-    namespace: default # Namespace where Dashy will be deployed
+    server: https://kubernetes.default.svc
+    namespace: default
   syncPolicy:
     automated:
       prune: true
