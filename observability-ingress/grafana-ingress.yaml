@@ -4,9 +4,10 @@ metadata:
   name: grafana-ingress
   namespace: observability
   annotations:
-    kubernetes.io/ingress.class: "public"
-    cert-manager.io/cluster-issuer: "lets-encrypt-prod"
+    kubernetes.io/ingress.class: public
+    cert-manager.io/cluster-issuer: lets-encrypt-prod
 spec:
+  ingressClassName: public
   rules:
   - host: grafana.learnwithnk.in
     http:
