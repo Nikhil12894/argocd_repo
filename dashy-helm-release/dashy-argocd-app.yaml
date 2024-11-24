@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://vyrtualsynthese.github.io/selfhosted-helmcharts/ # Chart repository URL
-    targetRevision: HEAD
+    targetRevision: "1.0.0" # Use a valid tag, branch, or commit hash here
     chart: charts/dashy
     helm:
       valuesFrom:
