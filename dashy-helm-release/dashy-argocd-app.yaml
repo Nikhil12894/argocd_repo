@@ -16,19 +16,15 @@ spec:
           enabled: true
           hosts:
             - host: dashy.learnwithnk.in  # Replace with your domain
-              paths:
-                - /
+              paths: /
           annotations:
             kubernetes.io/ingress.class: public
             cert-manager.io/cluster-issuer: lets-encrypt-prod
+            kubernetes.io/tls-acme: true
           tls:
             - hosts:
                 - dashy.learnwithnk.in
               secretName: dashy-tls-cert
-        # Optional: Customize Dashy further if needed
-        # image:
-        #   repository: <your-custom-repo>
-        #   tag: <your-custom-tag>
   destination:
     server: https://kubernetes.default.svc
     namespace: default
