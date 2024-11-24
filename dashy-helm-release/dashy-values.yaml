@@ -1,0 +1,26 @@
+# dashy-values-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dashy-values
+  namespace: argocd # Ensure this is in the ArgoCD namespace
+data:
+  values.yaml: |
+    ingress:
+      enabled: true
+      hosts:
+        - host: dashy.learnwithnk.in  # Replace with your domain
+          paths:
+            - /
+      annotations:
+        kubernetes.io/ingress.class: public  # Ensure this matches your Ingress controller
+        cert-manager.io/cluster-issuer: lets-encrypt-prod  # Use your ClusterIssuer
+      tls:
+        - hosts:
+            - dashy.learnwithnk.in  # Replace with your domain
+          secretName: dashy-tls-cert  # Secret name for the TLS certificate
+
+    # Optional: Customize Dashy further if needed
+    # image:
+    #   repository: <your-custom-repo>
+    #   tag: <your-custom-tag>

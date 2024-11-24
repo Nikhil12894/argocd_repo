@@ -1,0 +1,24 @@
+# dashy-argocd-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dashy
+  namespace: argocd # This should be the namespace where ArgoCD is running
+spec:
+  project: default
+  source:
+    repoURL: https://vyrtualsynthese.github.io/selfhosted-helmcharts/ # Chart repository URL
+    targetRevision: HEAD
+    chart: charts/dashy
+    helm:
+      valuesFrom:
+      - configMapKeyRef:
+          name: dashy-values # Make sure your dashy-values.yaml is stored in a ConfigMap
+          key: values.yaml
+  destination:
+    server: https://kubernetes.default.svc # Kubernetes API server URL
+    namespace: default # Namespace where Dashy will be deployed
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
