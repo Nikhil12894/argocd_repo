@@ -84,7 +84,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: learnwithnk.com
+  - host: learnwithnk.in
     http:
       paths:
       - backend:
