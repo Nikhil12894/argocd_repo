@@ -50,7 +50,7 @@ metadata:
   labels:
     app: vps-landing-app
     version: 1.0.0
-  name: vps-landing-ingress
+  name: vps-landing-ingress-1
   namespace: default
 spec:
   ingressClassName: public
@@ -69,3 +69,32 @@ spec:
   - hosts:
     - explorewithnk.com
     secretName: vps-landing-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: public
+    cert-manager.io/cluster-issuer: lets-encrypt-prod
+  labels:
+    app: vps-landing-app
+    version: 1.0.0
+  name: vps-landing-ingress-2
+  namespace: default
+spec:
+  ingressClassName: public
+  rules:
+  - host: learnwithnk.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: vps-landing-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - learnwithnk.in
+    secretName: vps-landing-tls-1
