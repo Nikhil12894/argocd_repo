@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: micro-frontend-editor.learnwithnk.in
+    - host: micro-frontend-editor.explorewithnk.com
       http:
         paths:
           - backend:
@@ -66,5 +66,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - micro-frontend-editor.learnwithnk.in
+        - micro-frontend-editor.explorewithnk.com
       secretName: micro-frontend-editor-tls
