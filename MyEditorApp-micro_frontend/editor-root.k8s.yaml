@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: app-editor.explorewithnk.com
+    - host: app-editor.learnwithnk.in
       http:
         paths:
           - backend:
@@ -66,5 +66,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - app-editor.explorewithnk.com
+        - app-editor.learnwithnk.in
       secretName: editor-root-tls
