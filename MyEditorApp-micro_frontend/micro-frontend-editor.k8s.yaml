@@ -1,70 +1,70 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   labels:
-#     app: micro-frontend-editor-app
-#     sha: 40718d028eace55c7efa7342644add09e6165847
-#     version: 1.0.0
-#   name: micro-frontend-editor
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: micro-frontend-editor-app
-#       version: 1.0.0
-#   template:
-#     metadata:
-#       labels:
-#         app: micro-frontend-editor-app
-#         version: 1.0.0
-#     spec:
-#       containers:
-#         - image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.6
-#           name: micro-frontend-editor-container
-#           ports:
-#             - containerPort: 80
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   labels:
-#     app: micro-frontend-editor-app
-#     version: 1.0.0
-#   name: micro-frontend-editor-service
-# spec:
-#   ports:
-#     - port: 80
-#       protocol: TCP
-#       targetPort: 80
-#   selector:
-#     app: micro-frontend-editor-app
-#     version: 1.0.0
-#   type: ClusterIP
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     cert-manager.io/cluster-issuer: lets-encrypt
-#   labels:
-#     app: micro-frontend-editor-app
-#     version: 1.0.0
-#   name: micro-frontend-editor-ingress
-#   namespace: default
-# spec:
-#   ingressClassName: public
-#   rules:
-#     - host: micro-frontend-editor.explorewithnk.com
-#       http:
-#         paths:
-#           - backend:
-#               service:
-#                 name: micro-frontend-editor-service
-#                 port:
-#                   number: 80
-#             path: /
-#             pathType: Prefix
-#   tls:
-#     - hosts:
-#         - micro-frontend-editor.explorewithnk.com
-#       secretName: micro-frontend-editor-tls
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: micro-frontend-editor-app
+    sha: c72eab0e1662222e6a8fe22b1b630066c260ed96
+    version: 1.0.0
+  name: micro-frontend-editor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-frontend-editor-app
+      version: 1.0.0
+  template:
+    metadata:
+      labels:
+        app: micro-frontend-editor-app
+        version: 1.0.0
+    spec:
+      containers:
+        - image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.6
+          name: micro-frontend-editor-container
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: micro-frontend-editor-app
+    version: 1.0.0
+  name: micro-frontend-editor-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: micro-frontend-editor-app
+    version: 1.0.0
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+  labels:
+    app: micro-frontend-editor-app
+    version: 1.0.0
+  name: micro-frontend-editor-ingress
+  namespace: default
+spec:
+  ingressClassName: public
+  rules:
+    - host: nkblog.explorewithnk.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: micro-frontend-editor-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - nkblog.explorewithnk.com
+      secretName: micro-frontend-editor-tls
