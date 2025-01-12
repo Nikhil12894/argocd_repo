@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: micro-frontend-editor-app
-    sha: c72eab0e1662222e6a8fe22b1b630066c260ed96
+    sha: acf7362df280c44c07d7d7bb2b3de20381c2cb13
     version: 1.0.0
   name: micro-frontend-editor
 spec:
@@ -19,7 +19,7 @@ spec:
         version: 1.0.0
     spec:
       containers:
-        - image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.6
+        - image: docker.io/nikhil12894/micro-frontend-host-app:v1.0.7
           name: micro-frontend-editor-container
           ports:
             - containerPort: 80
