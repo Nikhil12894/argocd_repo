@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: editor-root-app
-    sha: 083795c597293126534ac85fe9e2d8c7a9a0acf5
+    sha: f11c98f3aa486250e2de813f65c2bb6f6db3a639
     version: 1.0.0
   name: editor-root
 spec:
@@ -40,31 +40,3 @@ spec:
     app: editor-root-app
     version: 1.0.0
   type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: lets-encrypt
-  labels:
-    app: editor-root-app
-    version: 1.0.0
-  name: editor-root-ingress
-  namespace: default
-spec:
-  ingressClassName: public
-  rules:
-    - host: app-editor.learnwithnk.in
-      http:
-        paths:
-          - backend:
-              service:
-                name: editor-root-service
-                port:
-                  number: 80
-            path: /
-            pathType: Prefix
-  tls:
-    - hosts:
-        - app-editor.learnwithnk.in
-      secretName: editor-root-tls
