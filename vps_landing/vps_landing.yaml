@@ -71,7 +71,7 @@ spec:
   tls:
   - hosts:
     - explorewithnk.com
-    secretName: vps-landing-tls
+    secretName: vps-landing-tls-1
 # ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
