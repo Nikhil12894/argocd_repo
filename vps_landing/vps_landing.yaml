@@ -56,7 +56,7 @@ metadata:
   name: vps-landing-ingress-1
   namespace: default
 spec:
-  ingressClassName: public
+  ingressClassName: nginx
   rules:
   - host: explorewithnk.com
     http:
