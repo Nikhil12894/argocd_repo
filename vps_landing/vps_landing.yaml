@@ -45,7 +45,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: lets-encrypt-prod
   labels:
     app: vps-landing-app
